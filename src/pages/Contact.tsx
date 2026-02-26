@@ -4,11 +4,12 @@ import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +17,7 @@ const Contact = () => {
       title: "Message Sent!",
       description: "We'll get back to you within 24 hours.",
     });
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setForm({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
   return (
@@ -72,6 +73,21 @@ const Contact = () => {
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="+1 (234) 567-890"
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1.5">Service</label>
+                <Select value={form.service} onValueChange={(value) => setForm({ ...form, service: value })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="website-designing">Website Designing</SelectItem>
+                    <SelectItem value="website-development">Website Development</SelectItem>
+                    <SelectItem value="google-meta-ads">Google/Meta Ads</SelectItem>
+                    <SelectItem value="seo">SEO</SelectItem>
+                    <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
