@@ -119,8 +119,8 @@ const Contact = () => {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full bg-cta text-cta-foreground hover:bg-cta/90 shadow-lg shadow-cta/20">
-                <Send className="mr-2" size={18} /> Send Message
+              <Button type="submit" disabled={sending} className="w-full bg-cta text-cta-foreground hover:bg-cta/90 shadow-lg shadow-cta/20">
+                <Send className="mr-2" size={18} /> {sending ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </motion.div>
