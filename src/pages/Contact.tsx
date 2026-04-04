@@ -41,17 +41,20 @@ const Contact = () => {
   };
 
   return (
-    <div className="section-padding bg-background min-h-screen">
-      <div className="container-narrow">
+    <div className="section-padding bg-background min-h-screen relative overflow-hidden">
+      <div className="absolute top-20 right-[10%] w-72 h-72 rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 left-[10%] w-56 h-56 rounded-full bg-accent/5 blur-[80px] pointer-events-none" />
+
+      <div className="container-narrow relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest">Get In Touch</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Get In Touch</span>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mt-3">
-            Contact Us
+            Contact <span className="gradient-text">Us</span>
           </h1>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
             Have a project in mind? We'd love to hear about it. Drop us a message or give us a call.
@@ -63,9 +66,9 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="glass-card neon-border p-8 space-y-5">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">Name</label>
                 <Input
@@ -73,6 +76,7 @@ const Contact = () => {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your full name"
                   required
+                  className="bg-muted border-border focus:border-primary transition-colors duration-300"
                 />
               </div>
               <div>
@@ -83,6 +87,7 @@ const Contact = () => {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="you@example.com"
                   required
+                  className="bg-muted border-border focus:border-primary transition-colors duration-300"
                 />
               </div>
               <div>
@@ -92,12 +97,13 @@ const Contact = () => {
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="+1 (234) 567-890"
+                  className="bg-muted border-border focus:border-primary transition-colors duration-300"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">Service</label>
                 <Select value={form.service} onValueChange={(value) => setForm({ ...form, service: value })}>
-                  <SelectTrigger>
+                  <SelectTrigger className="bg-muted border-border">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
@@ -117,9 +123,14 @@ const Contact = () => {
                   placeholder="Tell us about your project..."
                   rows={5}
                   required
+                  className="bg-muted border-border focus:border-primary transition-colors duration-300"
                 />
               </div>
-              <Button type="submit" disabled={sending} className="w-full bg-cta text-cta-foreground hover:bg-cta/90 shadow-lg shadow-cta/20">
+              <Button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/40 hover:scale-[1.02]"
+              >
                 <Send className="mr-2" size={18} /> {sending ? "Sending..." : "Send Message"}
               </Button>
             </form>
@@ -129,7 +140,7 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-8"
           >
             <div>
@@ -141,16 +152,16 @@ const Contact = () => {
                   { icon: MessageCircle, label: "WhatsApp Chat", href: "https://wa.me/1234567890" },
                   { icon: MapPin, label: "123 Business Avenue, Downtown District" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                      <item.icon className="text-accent" size={20} />
+                  <div key={item.label} className="flex items-center gap-3 group">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
+                      <item.icon className="text-primary" size={20} />
                     </div>
                     {item.href ? (
                       <a
                         href={item.href}
                         target={item.href.startsWith("http") ? "_blank" : undefined}
                         rel="noopener noreferrer"
-                        className="text-foreground/80 hover:text-accent transition-colors"
+                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
                       >
                         {item.label}
                       </a>

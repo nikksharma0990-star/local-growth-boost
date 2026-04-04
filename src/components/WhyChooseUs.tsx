@@ -42,7 +42,7 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
   }, [target]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-extrabold text-accent">
+    <div ref={ref} className="text-4xl md:text-5xl font-extrabold gradient-text">
       {count.toLocaleString()}{suffix}
     </div>
   );
@@ -50,20 +50,24 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
 
 const WhyChooseUs = () => {
   return (
-    <section id="about" className="section-padding bg-primary text-primary-foreground">
-      <div className="container-narrow">
+    <section id="about" className="section-padding bg-card relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+
+      <div className="container-narrow relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest">Why NS44</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold mt-3">
-            Your Neighborhood Digital Partner
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Why NS44</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mt-3">
+            Your Neighborhood <span className="gradient-text">Digital Partner</span>
           </h2>
-          <p className="text-primary-foreground/70 mt-4 max-w-xl mx-auto text-lg">
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
             We're a local agency that genuinely cares about helping businesses in our community grow.
             Affordable, transparent, and results-driven.
           </p>
@@ -76,14 +80,15 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="text-center"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              className="text-center glass-card p-8"
             >
-              <div className="w-16 h-16 rounded-2xl bg-accent/15 flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="text-accent" size={28} />
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                <stat.icon className="text-primary" size={28} />
               </div>
               <Counter target={stat.value} suffix={stat.suffix} />
-              <p className="text-primary-foreground/60 mt-2 font-medium">{stat.label}</p>
+              <p className="text-muted-foreground mt-2 font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </div>

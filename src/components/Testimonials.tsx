@@ -37,10 +37,11 @@ const TestimonialCard = ({ t, i }: { t: typeof testimonials[0]; i: number }) => 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.4, delay: i * 0.1 }}
-    className="glass-card p-8 relative"
+    transition={{ duration: 0.5, delay: i * 0.1 }}
+    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+    className="glass-card neon-border p-8 relative"
   >
-    <Quote className="text-accent/20 absolute top-6 right-6" size={40} />
+    <Quote className="text-primary/15 absolute top-6 right-6" size={40} />
     <div className="flex gap-1 mb-4">
       {Array.from({ length: t.stars }).map((_, j) => (
         <Star key={j} className="text-cta fill-cta" size={18} />
@@ -72,18 +73,20 @@ const Testimonials = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="testimonials" className="section-padding bg-secondary">
-      <div className="container-narrow">
+    <section id="testimonials" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute top-1/3 right-0 w-72 h-72 rounded-full bg-cta/5 blur-[100px] pointer-events-none" />
+
+      <div className="container-narrow relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest">Testimonials</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Testimonials</span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mt-3">
-            What Our Clients Say
+            What Our <span className="gradient-text">Clients Say</span>
           </h2>
         </motion.div>
 
@@ -102,8 +105,8 @@ const Testimonials = () => {
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === selectedIndex ? "bg-accent" : "bg-accent/30"
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    i === selectedIndex ? "bg-primary w-8" : "bg-primary/30"
                   }`}
                   onClick={() => emblaApi?.scrollTo(i)}
                   aria-label={`Go to testimonial ${i + 1}`}

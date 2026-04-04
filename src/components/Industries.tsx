@@ -41,18 +41,20 @@ const Industries = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="section-padding bg-background">
-      <div className="container-narrow">
+    <section className="section-padding bg-card relative overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+
+      <div className="container-narrow relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest">Industries</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Industries</span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mt-3">
-            Industries We've Served
+            Industries We've <span className="gradient-text">Served</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
             From local shops to growing startups, we deliver results across diverse sectors.
@@ -67,7 +69,7 @@ const Industries = () => {
                   key={item.name}
                   className="flex-[0_0_80%] sm:flex-[0_0_45%] md:flex-[0_0_30%] min-w-0 pl-4"
                 >
-                  <div className="glass-card overflow-hidden group cursor-grab active:cursor-grabbing">
+                  <div className="glass-card neon-border overflow-hidden group cursor-grab active:cursor-grabbing">
                     <div className="overflow-hidden">
                       <img
                         src={item.image}
@@ -76,7 +78,7 @@ const Industries = () => {
                         loading="lazy"
                       />
                     </div>
-                    <p className="text-center font-bold text-foreground py-4 text-lg">{item.name}</p>
+                    <p className="text-center font-bold text-foreground py-4 text-lg group-hover:text-primary transition-colors duration-300">{item.name}</p>
                   </div>
                 </div>
               ))}
@@ -85,14 +87,14 @@ const Industries = () => {
 
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center hover:bg-accent/90 transition-colors z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 flex items-center justify-center hover:bg-primary/90 transition-all duration-300 hover:scale-110 z-10"
             aria-label="Previous"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center hover:bg-accent/90 transition-colors z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 flex items-center justify-center hover:bg-primary/90 transition-all duration-300 hover:scale-110 z-10"
             aria-label="Next"
           >
             <ChevronRight size={20} />
