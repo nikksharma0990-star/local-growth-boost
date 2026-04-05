@@ -6,6 +6,58 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    --primary: 265 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 93%;
+    --secondary-foreground: 240 10% 20%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 170 85% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 88%;
+    --input: 240 6% 88%;
+    --ring: 265 90% 55%;
+
+    --radius: 0.75rem;
+
+    --cta: 340 90% 55%;
+    --cta-foreground: 0 0% 100%;
+
+    --neon-glow: 265 90% 55%;
+    --neon-cyan: 170 85% 40%;
+    --neon-pink: 340 90% 55%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(265 90% 96%), hsl(0 0% 100%), hsl(170 60% 96%));
+    --card-shadow: 0 4px 24px -4px hsl(265 90% 55% / 0.08);
+    --card-shadow-hover: 0 12px 40px -8px hsl(265 90% 55% / 0.18);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 265 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 93%;
+    --sidebar-accent-foreground: 240 10% 20%;
+    --sidebar-border: 240 6% 88%;
+    --sidebar-ring: 265 90% 55%;
+  }
+
+  .dark {
     --background: 240 15% 9%;
     --foreground: 0 0% 95%;
 
@@ -33,8 +85,6 @@
     --border: 240 10% 20%;
     --input: 240 10% 20%;
     --ring: 265 90% 60%;
-
-    --radius: 0.75rem;
 
     --cta: 340 90% 58%;
     --cta-foreground: 0 0% 100%;
