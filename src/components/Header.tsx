@@ -128,9 +128,12 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
-                  <Link to="/contact">Get a Quote</Link>
-                </Button>
+                <div className="flex items-center gap-3 mt-2">
+                  <ThemeToggle />
+                  <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1">
+                    <Link to="/contact">Get a Quote</Link>
+                  </Button>
+                </div>
               </nav>
             </motion.div>
           )}
