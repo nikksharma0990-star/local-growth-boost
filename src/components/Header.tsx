@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -85,6 +86,7 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/40 hover:scale-105">
               <Link to="/contact">Get a Quote</Link>
             </Button>
@@ -126,9 +128,12 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
-                  <Link to="/contact">Get a Quote</Link>
-                </Button>
+                <div className="flex items-center gap-3 mt-2">
+                  <ThemeToggle />
+                  <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1">
+                    <Link to="/contact">Get a Quote</Link>
+                  </Button>
+                </div>
               </nav>
             </motion.div>
           )}
