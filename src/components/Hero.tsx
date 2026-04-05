@@ -85,7 +85,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-card hover:border-primary/50 text-base transition-all duration-300 hover:scale-105"
+                className="border-border text-foreground hover:bg-primary/10 hover:text-foreground hover:border-primary/50 text-base transition-all duration-300 hover:scale-105"
               >
                 <Phone className="mr-2" size={18} /> Call Us
               </Button>
@@ -95,7 +95,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-card hover:border-accent/50 text-base transition-all duration-300 hover:scale-105"
+                className="border-border text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/50 text-base transition-all duration-300 hover:scale-105"
               >
                 <MessageCircle className="mr-2" size={18} /> WhatsApp
               </Button>
