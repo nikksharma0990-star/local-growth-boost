@@ -86,6 +86,7 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/40 hover:scale-105">
               <Link to="/contact">Get a Quote</Link>
             </Button>
